@@ -1,0 +1,121 @@
+body {
+    background-color: #c3e9be;
+    font-family: 'Times New Roman', Times, serif;
+    color: #346739;
+}
+
+header{
+    background-color: #b1daac;
+    background-attachment: local;
+    color: #346739;
+    margin-top: 0px;
+    position: sticky;
+    top: 0;
+}
+
+.link{
+    padding: 10px 15px;
+    text-decoration: none;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    background-color: #689b5e;
+    border-radius: 10px;
+    border: #346739;
+    margin: 20px;
+}
+
+h1{
+    font-weight: bolder;
+    color: #346739;
+    margin-bottom: 5px;
+    margin-top: 5px;
+}
+
+h2{
+    font-weight: bolder;
+    color: #346739;
+    text-align: center;
+}
+
+nav{
+    display: flex;
+    justify-content: space-between;
+}
+
+div{
+    width: 600px;
+    border-radius: 20px;
+    margin-left: 10px;
+    background-color: #b1daac;
+    padding: 10px;
+}
+
+.estadios{
+    box-shadow: 25px 29px 10px -9px rgba(78,184,47,0.45);
+    -webkit-box-shadow: 25px 29px 10px -9px rgba(78,184,47,0.45);
+    -moz-box-shadow: 25px 29px 10px -9px rgba(78,184,47,0.45);
+}
+
+button{
+    background-color: #3e7932;
+    width: 60px;
+    height: 40px;
+    border-radius: 10px;
+    border: #346739;
+    margin: 20px;
+}
+
+.contenedorgrandslams{
+    display: flex;
+}
+
+.australia{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 5px;
+}
+
+.rolandg{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 5px;
+}
+
+.wimbledon{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 5px;
+}
+
+.us{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 5px;
+}
+
+main{
+    background-color: #c3e9be;
+}
+
+footer{
+    background-color: #b1daac;
+    color: #346739;
+    margin-top: 10px;
+    padding: 3px;
+}
+
+
+@media(max-width: 768px){
+    body{
+        flex-wrap: wrap;
+    }
+}
+
+@media(max-width: 567px){
+    .contenedorgrandslams{
+        flex-wrap: wrap;
+    }
+}
