@@ -48,12 +48,6 @@ div{
     padding: 10px;
 }
 
-.estadios{
-    box-shadow: 25px 29px 10px -9px rgba(78,184,47,0.45);
-    -webkit-box-shadow: 25px 29px 10px -9px rgba(78,184,47,0.45);
-    -moz-box-shadow: 25px 29px 10px -9px rgba(78,184,47,0.45);
-}
-
 button{
     background-color: #3e7932;
     width: 60px;
