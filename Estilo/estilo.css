@@ -8,17 +8,23 @@ body {
     background-color: #c3e9be;
     font-family: 'Times New Roman', Times, serif;
     color: #346739;
+    max-width: 1500px;
+    margin: 0 auto;
+    padding: 0 6px;
+    overflow-x: hidden;
 }
 
 header{
     background-color: #b1daac;
     background-attachment: local;
     color: #346739;
-    margin-top: 0px;
+    margin-bottom: 5px;
     position: sticky;
     top: 0;
     overflow-x: hidden;
     width: 100%;
+    max-width: 1500px;
+    box-sizing: border-box;
 }
 
 .link{
@@ -27,35 +33,40 @@ header{
     background-color: #82a87b;
     border-radius: 10px;
     border: #356e3b;
-    margin: 20px;
+    margin-bottom: 4px;
+    display: flex;
+    flex-wrap: wrap;
 }
 
 h1{
     font-weight: bolder;
     color: #346739;
-    margin-bottom: 5px;
-    margin-top: 5px;
+    padding: 5px;
 }
 
 h2{
     font-weight: bolder;
     color: #346739;
     text-align: center;
+    padding: 5px;
 }
 
 nav{
     display: flex;
     justify-content: center;
     flex-wrap: wrap;
-    gap:  8px;
+    overflow-x: hidden;
+    gap: 8px;
 }
 
 div{
     width: 100%;
+    margin-left: 4px;
     border-radius: 20px;
-    margin-left: 10px;
     background-color: #b1daac;
     padding: 10px;
+    display: flex;
+    flex-wrap: wrap;
 }
 
 button{
@@ -111,17 +122,16 @@ footer{
 }
 
 
-@media screen and (max-width: 100%){
+@media screen and (max-width: 900px){
     body{
+        display: flex;
         flex-wrap: wrap;
     }
     header{
         flex-wrap: wrap;
     }
-    footer{
-        flex-wrap: wrap;
-    }
     .contenedorgrandslams{
+        display: flex;
         flex-wrap: wrap;
     }
 }
