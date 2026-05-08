@@ -1,3 +1,9 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
 body {
     background-color: #c3e9be;
     font-family: 'Times New Roman', Times, serif;
@@ -11,6 +17,8 @@ header{
     margin-top: 0px;
     position: sticky;
     top: 0;
+    overflow-x: hidden;
+    width: 100%;
 }
 
 .link{
@@ -37,11 +45,13 @@ h2{
 
 nav{
     display: flex;
-    justify-content: space-between;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap:  8px;
 }
 
 div{
-    width: 600px;
+    width: 100%;
     border-radius: 20px;
     margin-left: 10px;
     background-color: #b1daac;
@@ -101,7 +111,7 @@ footer{
 }
 
 
-@media screen and (max-width: 768px){
+@media screen and (max-width: 100%){
     body{
         flex-wrap: wrap;
     }
@@ -111,10 +121,8 @@ footer{
     footer{
         flex-wrap: wrap;
     }
-}
-
-@media(max-width: 567px){
     .contenedorgrandslams{
         flex-wrap: wrap;
     }
 }
+
