@@ -101,8 +101,14 @@ footer{
 }
 
 
-@media(max-width: 768px){
+@media screen and (max-width: 768px){
     body{
+        flex-wrap: wrap;
+    }
+    header{
+        flex-wrap: wrap;
+    }
+    footer{
         flex-wrap: wrap;
     }
 }
