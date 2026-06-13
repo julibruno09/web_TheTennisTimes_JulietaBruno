@@ -1,148 +1,123 @@
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
-
 body {
-    background-color: #c3e9be;
-    font-family: 'Times New Roman', Times, serif;
-    color: #346739;
-    max-width: 1500px;
-    margin: 0 auto;
-    padding: 0 6px;
-    overflow-x: hidden;
-}
-
-header{
-    background-color: #b1daac;
-    background-attachment: local;
-    color: #346739;
-    margin-bottom: 5px;
-    position: sticky;
-    top: 0;
-    overflow-x: hidden;
-    width: 100%;
-    max-width: 1500px;
-    box-sizing: border-box;
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #f6e6d9;
+    margin: 0;
+    padding: 20px;
+    color: #f6e6d9;
 }
 
-.link{
-    padding: 10px 15px;
-    text-decoration: none;
-    background-color: #82a87b;
-    border-radius: 10px;
-    border: #356e3b;
-    margin-bottom: 4px;
+.container {
     display: flex;
-    flex-wrap: wrap;
+    gap: 30px;
+    max-width: 1200px;
+    margin: 0 auto;
 }
 
-h1{
-    font-weight: bolder;
-    color: #346739;
-    padding: 5px;
+.form-section, .invoice-section {
+    background: #f6e6d9;
+    padding: 25px;
+    border-radius: 8px;
+    flex: 1;
 }
 
-h2{
-    font-weight: bolder;
-    color: #346739;
-    text-align: center;
-    padding: 5px;
+h2, h3, h4 {
+    margin-top: 0;
+    color: #935931;
 }
 
-nav{
-    display: flex;
-    justify-content: center;
-    flex-wrap: wrap;
-    overflow-x: hidden;
-    gap: 8px;
+form label {
+    display: block;
+    margin: 10px 0 5px;
+    font-weight: bold;
 }
 
-div{
+form input, form select {
     width: 100%;
-    margin-left: 4px;
-    border-radius: 20px;
-    background-color: #b1daac;
-    padding: 10px;
-    display: flex;
-    flex-wrap: wrap;
-}
-
-button{
-    background-color: #82a87b;
-    width: 60px;
-    height: 40px;
-    border-radius: 10px;
-    border: #346739;
-    margin: 20px;
-}
-
-.contenedorgrandslams{
-    display: flex;
-}
-
-.australia{
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    margin-top: 5px;
-}
-
-.rolandg{
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    margin-top: 5px;
-}
-
-.wimbledon{
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    margin-top: 5px;
-}
-
-.us{
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    margin-top: 5px;
-}
-
-main{
-    background-color: #c3e9be;
-    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
-}
-
-footer{
-    background-color: #b1daac;
-    color: #346739;
-    padding: 3px;
-    margin-top: 5px;
-    overflow-x: hidden;
-    width: 100%;
-    max-width: 1500px;
+    padding: 8px;
+    margin-bottom: 10px;
+    border: 1px solid #f6e6d9;
+    border-radius: 4px;
     box-sizing: border-box;
 }
 
-
-@media screen and (max-width: 900px){
-    body{
-        display: flex;
-        flex-wrap: wrap;
-    }
-    header{
-        flex-wrap: wrap;
-    }
-    footer{
-        display: flex;
-        flex-wrap: wrap;
-    }
-    .contenedorgrandslams{
-        display: flex;
-        flex-wrap: wrap;
-    }
+.productos-grid {
+    display: flex;
+    gap: 15px;
 }
 
+button {
+    width: 100%;
+    padding: 12px;
+    background-color: #ddac85;
+    color: 935931;
+    border: none;
+    border-radius: 4px;
+    font-size: 16px;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+button:hover {
+    background-color: #f6e6d9;
+}
+
+/* Estilos de la Factura */
+.invoice-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.empresa-logo img {
+    max-width: 80px;
+    display: block;
+    margin-bottom: 5px;
+}
+
+.invoice-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 20px 0;
+}
+
+.invoice-table th, .invoice-table td {
+    border: 1px solid #f6e6d9;
+    padding: 10px;
+    text-align: left;
+}
+
+.invoice-table th {
+    background-color: #f6e6d9;
+}
+
+.invoice-total {
+    text-align: right;
+    margin-top: 20px;
+}
+
+.invoice-actions {
+    display: flex;
+    gap: 10px;
+    margin-top: 20px;
+}
+
+.btn-email { background-color: #ddac85; }
+.btn-email:hover { background-color: #ddac85; }
+.btn-print { background-color: #ddac85; }
+.btn-print:hover { background-color: #ddac85; }
+
+/* REGLA DE IMPRESIÓN: Oculta el formulario y botones al imprimir o guardar en PDF */
+@media print {
+    .no-print {
+        display: none !important;
+    }
+    body {
+        background: #f6e6d9;
+        padding: 0;
+    }
+    .invoice-section {
+        box-shadow: none;
+        padding: 0;
+        width: 100%;
+    }
+}
