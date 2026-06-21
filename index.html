@@ -1,104 +1,102 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    
-    <title>The Tennis Times</title>
-    
-    <link rel="stylesheet" href="./Estilo/estilo.css">
-    
+    <title>Facturas - Pro-bar</title>
+    <link rel="stylesheet" href="estilos.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
 </head>
 <body>
-    <header> <!--Encabezado-->
-        <h1>The Tennis Times 🎾</h1>
-        <h1>Todo sobre tenis en un mismo lugar!</h1>
-        <nav> <!--Navegador-->
-            <a class="link" href="https://es.wikipedia.org/wiki/Historia_del_tenis" target="_blank">Historia del Tenis</a>
-            <a class="link" href="https://www.nycracquetsports.com/nyc-racquet-sports-blog/grand-slam-tournaments" target="_blank">Torneos Grand Slam</a>
-            <a class="link" href="https://www.atptour.com/es/rankings/singles" target="_blank">Ranking Hombres</a>
-            <a class="link" href="https://www.wtatennis.com/rankings/singles" target="_blank">Ranking Mujeres</a>
-            <a class="link" href="#TGS">Torneos Grand Slam</a>
-        </nav>
-    </header>
-    <main> <!--Contenido-->
-        <h2 id="TGS">Torneos Grand Slam</h2>
-        <section class="contenedorgrandslams">
-            <div class="australia">
-                <h3>Australia Open: Rod Laver Arena</h3>
-                <p>Es el primer torneo del año y el último fundado entre los cuatro Grand Slam. Se juega en enero en Melbourne, Australia. Se caracteriza por ser jugado en pista dura, así como también por el clima caluroso de la época del año.  La primera edición se jugó en noviembre de 1905 en el Warehouseman's Cricket Ground de Melbourne ante 5,000 personas. Es apodado "Happy Slam" por los jugadores debido a su ambiente relajado, hospitalidad y organización. A continuación están los últimos 5 campeones masculinos del torneo:</p>
-                <ol>
-                    <li>2026: Carlos Alcaraz (español)</li>
-                    <li>2025: Jannik Sinner (italiano)</li>
-                    <li>2024: Jannik Sinner (italiano)</li>
-                    <li>2023: Novak Djokovic (serbio)</li>
-                    <li>2022: Rafael Nadal (español)</li>
-                </ol>
-                <img class="estadios" src="https://ik.imagekit.io/p1/152954.jpg?updatedAt=1733220498584" alt="Rod Laver Arena" width="60%">
-                <h3 style="color: #3e7932;">Ubicación</h3>
-                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3022.5530202100845!2d-73.84945252513305!3d40.749859935298886!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89c25fd945137c79%3A0x6045c9d270878f21!2sArthur%20Ashe%20Stadium!5e0!3m2!1ses!2sar!4v1777585140126!5m2!1ses!2sar" width="200" height="200" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
-                <button>Ver más</button>
+
+    <div class="container">
+        <section class="form-section no-print">
+            <h2>Ingresar Datos de la Venta</h2>
+            <form id="facturaForm">
+                <label>Nombre Completo del Cliente:</label>
+                <input type="text" id="clienteNombre" placeholder="Ej. Juan Pérez" required>
+
+                <label>Mail del Cliente:</label>
+                <input type="email" id="clienteEmail" placeholder="ejemplo@mail.com" required>
+
+                <label>Fecha de la Operación:</label>
+                <input type="date" id="fechaOperacion" value="2026-06-13" required>
+
+                <div class="productos-grid">
+                    <div>
+                        <label>Cant. Avena:</label>
+                        <input type="number" id="cantAvena" value="0" min="0">
+                        <label>Precio Unitario Avena y Chocolate:</label>
+                        <input type="number" id="precioAvena" value="2000" min="0">
+                    </div>
+                    <div>
+                        <label>Cant. Quinoa Pop:</label>
+                        <input type="number" id="cantQuinoa" value="0" min="0">
+                        <label>Precio Unitario Quinoa Pop y Chocolate:</label>
+                        <input type="number" id="precioQuinoa" value="1600" min="0">
+                    </div>
+                </div>
+
+                <label>Método de Pago:</label>
+                <select id="metodoPago">
+                    <option value="Contado">Contado</option>
+                    <option value="Cuenta Corriente">Cuenta Corriente</option>
+                    <option value="Mercado Pago">Mercado Pago</option>
+                </select>
+
+                <button type="button" onclick="generarFactura()">Generar Factura</button>
+            </form>
+        </section>
+
+        <section class="invoice-section" id="facturaVista">
+            <div class="invoice-header">
+                <div class="empresa-logo">
+                    <img src="Imagenes/Pro-bar logo.png" alt="Logo" onerror="this.style.display='none';" width="25%">
+                    <h3>Pro-bar</h3>
+                </div>
+                <div class="empresa-datos">
+                    <p><strong>Teléfono:</strong> 9 11 2174-7888</p>
+                    <p><strong>Instagram:</strong> @probar.oficial</p>
+                    <p><strong>Fecha de Operación:</strong> <span id="facturaFecha">--/--/----</span></p>
+                </div>
             </div>
-            <div class="rolandg">
-                <h3>Roland Garros: Court Philippe Chatrier</h3>
-                <p>Este torneo se juega entre mayo y junio en París, Francia. Es el único Grand Slam del año con cancha de polvo de ladrillo. Rolland Garros fue un famoso aviador francés de la Primera Guerra Mundial y el primero en cruzar el Mar Mediterráneo sin escalas en 1913. El estadio recibió su nombre en 1928 como condición para que la ciudad donara los terrenos. A continuación están los últimos 5 campeones masculinos del torneo:</p>
-                <ol>
-                    <li>2026: Todavía no se jugó</li>
-                    <li>2025: Carlos Alcaraz (español)</li>
-                    <li>2024: Carlos Alcaraz (español)</li>
-                    <li>2023: Novak Djokovic (serbio)</li>
-                    <li>2022: Rafael Nadal (español)</li>
-                </ol>
-                <img class="estadios" src="https://rutadeportiva.com/wp-content/uploads/2022/05/roland-garros-2015-final-stadium.jpg" alt="Court Philippe Chatrier" width="60%">
-                <h3 style="color: #3e7932;">Ubicación</h3>
-                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2625.5771413076104!2d2.246709775410758!3d48.84720400149506!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47e67ac611150657%3A0xf295526aefe6fdb5!2sCourt%20Philippe%20Chatrier!5e0!3m2!1ses!2sar!4v1777585299926!5m2!1ses!2sar" width="200" height="200" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
-                <button>Ver más</button>
+
+            <div class="invoice-cliente">
+                <h4>Datos del Cliente</h4>
+                <p><strong>Consumidor Final</strong></p>
+                <p><strong>Cliente:</strong> <span id="facturaCliente">---------</span></p>
+                <p><strong>Mail:</strong> <span id="facturaEmail">---------</span></p>
+                <p><strong>Condición de Pago:</strong> <span id="facturaPago">---------</span></p>
             </div>
-            <div class="wimbledon">
-                <h3>Wimbledon: Centre Court</h3>
-                <p>Se juega en Londres, Inglaterra etre junio y julio. Es el torneo más antiguo y estricto del circuito, se juega en cancha de césped y los tenistas están obligados a vestir únicamente de blanco. El nombre original cuando se fundó en 1868 era All England Croquet Club hasta que el tenis se hizo tan popular que cambiaron el nombre en 1877 a All England Croquet and Lawn Tennis Club.  Ese mismo año organizaron el primer campeonato de tenis para recaudar dinero para reparar el rodillo de pasto que se usaba para mantener las canchas de croquet. A continuación están los últimos 5 campeones masculinos del torneo:</p>
-                <ol>
-                    <li>2026: Todavía no se jugó</li>
-                    <li>2025: Jannik Sinner (italiano)</li>
-                    <li>2024: Carlos Alcaraz (español)</li>
-                    <li>2023: Carlos Alcaraz (español)</li>
-                    <li>2022: Novak Djokovic (serbio)</li>
-                </ol>
-                <img class="estadios" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTALncTMe15J_kILVLTo2HZD3hlpcYiWzSepw&s" alt="Central Court" width="60%">
-                <h3 style="color: #3e7932;">Ubicación</h3>
-                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2487.331649426553!2d-0.21698862439841426!3d51.433702916085835!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x48760f52612050a5%3A0xeaee595f26abedbd!2sPista%20Central%20Wimbledon!5e0!3m2!1ses!2sar!4v1777585375758!5m2!1ses!2sar" width="200" height="200" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
-               <button>Ver más</button>
+
+            <table class="invoice-table">
+                <thead>
+                    <tr>
+                        <th>Sabor de Barrita</th>
+                        <th>Cantidad Comprada</th>
+                        <th>Precio Unitario</th>
+                        <th>Precio Total por Sabor</th>
+                    </tr>
+                </thead>
+                <tbody id="facturaDetalle">
+                    <tr>
+                        <td colspan="4" style="text-align:center;">Completá el formulario y tocá "Generar Factura"</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <div class="invoice-total" style="text-align: right; margin-top: 20px;">
+                <p>Subtotal: $<span id="facturaSubtotal">0.00</span></p>
+                <p>IVA Contenido: $<span id="facturaIVA">0.00</span></p>
+                <h3>Total: $<span id="facturaTotal">0.00</span></h3>
             </div>
-            <div class="us">
-                <h3>US Open: Arthur Ashe Stadium</h3>
-                <p>Durante agosto y septiembre se juega en pista dura en Nueva York, Estados Unidos. Se caracteriza por sus partidos de exhibición con tenistas en actividad y retirados. Originalmente era de césped pero en 1975 lo modificaron a arcilla por las quejas de los jugadores por el rebote impredecible y el mal estado del césped en Forest Hills. Sin embargo en 1978 fue modificado a cemento por la mudanza a Flushing Meadows (cede actual) para facilitar el mantenimiento. A continuación están los últimos 5 campeones masculinos del torneo: </p>
-                <ol>
-                    <li>2026: Todavía no se jugó</li>
-                    <li>2025: Carlos Alcaraz (español)</li>
-                    <li>2024: Jannik Sinner (italiano)</li>
-                    <li>2023: Novak Djokovic (serbio)</li>
-                    <li>2022: Carlos Alcaraz (español)</li>
-                </ol>
-                <img class="estadios" src="https://i.guim.co.uk/img/media/1c07f795143a5728dce15651eeecade67012179d/0_307_6304_3546/master/6304.jpg?width=465&dpr=1&s=none&crop=none" alt="Arthur Ashe Stadium" width="60%">
-                <h3 style="color: #3e7932;">Ubicación</h3>
-                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3022.5530202100845!2d-73.84945252513305!3d40.749859935298886!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89c25fd945137c79%3A0x6045c9d270878f21!2sArthur%20Ashe%20Stadium!5e0!3m2!1ses!2sar!4v1777585140126!5m2!1ses!2sar" width="200" height="200" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
-                <button>Ver más</button>
+
+            <div class="invoice-actions no-print">
+                <button class="btn-print" onclick="window.print()">🖨️ Guardar Factura (PDF)</button>
             </div>
-        </section> 
-    </main>
-    <footer> <!--Fin de página-->
-        <h3 style="color: #346739;">Desarrollado por Julieta Bruno</h3>
-        <div>
-            <a href="https://www.instagram.com/" target="_blank">
-                <img src="./Imagenes/social.png" alt="Logo de instagram">
-            </a>
-            <a href="https://www.facebook.com/" target="_blank">
-                <img src="./Imagenes/facebook.png" alt="Logo de instagram">
-            </a>
-            <a href="https://x.com/" target="_blank">
-                <img src="./Imagenes/gorjeo.png" alt="Logo de instagram">
-            </a>
-        </div>
-    </footer>
+        </section>
+    </div>
+
+    <script src="js/app.js"></script>
 </body>
 </html>
